@@ -26,10 +26,12 @@ dbConnection.once("open", () => console.log("Connected to DB!"));
 
 
 const songRoutes = require('./routes/song'); //to import the routes/song.js
-const authRoutes = require('./routes/auth'); //to import the routes/song.js
+const authRoutes = require('./routes/auth'); //to import the routes/auth.js
+const chatRoutes = require('./routes/chat'); //to import the routes/chat.js
 
 app.use('/song', songRoutes);
 app.use('/auth', authRoutes);
+app.use('/chat', chatRoutes);
 
 
 app.listen(3000, () =>
