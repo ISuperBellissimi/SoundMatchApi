@@ -1,8 +1,13 @@
 const express = require('express');
 const songRouter = express.Router();
-const songController = require('../controllers/song.js');
+const songController = require('../controllers/song');
+var bodyParser = require('body-parser');
 
-songRouter.get('', songController.getSongs);
+var jsonParser = bodyParser.json();
+
+songRouter.post('', songController.post);
+
+songRouter.get('', songController.getAllSongs);
 
 // print all songs
 songRouter.get('/user/:user_id/', songController.getSongs);

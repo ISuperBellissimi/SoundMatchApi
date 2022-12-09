@@ -1,19 +1,19 @@
 const mongoose = require("mongoose");
-const User = require('/users-model.js');
-
-const ChatSchema = new mongoose.Schema({
-    users: [User],
-    messages: [Message],
-    updated_at: {type: Date, deafault: Date.now},
-}, {collection: 'chats'});
 
 const Message = new mongoose.Schema({
-    from: {type: User, required: true},
-    to: {type: User, required: true},
-    message_body: String,
+    from: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
+    to: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
+    message_body: {type: String, default: null},
     message_status: {type: Boolean, default: false},
     created_at: {type: Date, default: Date.now},
 })
 
+const ChatSchema = new mongoose.Schema({
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
+    receiver: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
+    messages: [{type: Message}],
+    updated_at: {type: Date, deafault: Date.now},
+}, {collection: 'chats'});
+
 const Chat = mongoose.model("Chat", ChatSchema);
-monule.exports = Chat;
+module.exports = Chat;

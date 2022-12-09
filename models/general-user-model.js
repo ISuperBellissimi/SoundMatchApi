@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const Genre = require('/genre-model.js');
 
 const UserSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  favourite_genres: [Genre],
+  isartist: {type: Boolean, default: false}
 }, {collection: 'users'});
 
 const User = mongoose.model("User", UserSchema);

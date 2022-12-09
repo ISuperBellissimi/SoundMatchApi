@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require('../models/users-model.js'); //to import the routes/song.js
+const User = require('../models/general-user-model'); //to import the routes/song.js
 
 
 // create an account
